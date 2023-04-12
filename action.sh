@@ -7,8 +7,6 @@ set -e
 OUTPUT=$(bash -c "npx netlify-cli $*" | tr '\n' ' ')
 set +e
 
-[[ $OUTPUT =~ ^.*Website\sDraft\sURL:\s(.+).If.*$ ]]
-
-NETLIFY_OUTPUT=$(echo ${BASH_REMATCH[1]})
+NETLIFY_OUTPUT=$(echo "$OUTPUT" | grep -o 'https://\S*--.*netlify.app')
 
 echo "NETLIFY_OUTPUT=$NETLIFY_OUTPUT" >> $GITHUB_OUTPUT
