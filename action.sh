@@ -9,6 +9,6 @@ set +e
 
 [[ $OUTPUT =~ ^.*Website\sDraft\sURL:\s(.+).If.*$ ]]
 
-NETLIFY_OUTPUT=$(echo $BASH_REMATCH[1])
+NETLIFY_OUTPUT=$(echo ${BASH_REMATCH[1]})
 
 echo "NETLIFY_OUTPUT=$NETLIFY_OUTPUT" >> $GITHUB_OUTPUT
